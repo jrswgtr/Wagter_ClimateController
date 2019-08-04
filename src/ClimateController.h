@@ -10,7 +10,7 @@
 class ClimateController
 {
     private:
-        const ClimateSensor &sensor;
+        ClimateSensor *sensor;
         Relay *relay;
         Lock *lock;
         Range *range;
@@ -20,8 +20,11 @@ class ClimateController
         void setState(bool state);
 
     public:
-        ClimateController(const ClimateSensor &_sensor, Relay *_relay, Range *_range, Lock *_lock);
+        ClimateController(ClimateSensor *_sensor, Relay *_relay, Range *_range, Lock *_lock);
         void poll();
+        bool getRelayState();
+        Range *getRange();
+        float getCurrentValue();
 };
 
 #endif

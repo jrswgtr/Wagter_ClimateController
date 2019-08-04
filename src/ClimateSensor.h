@@ -10,8 +10,8 @@ class ClimateSensor
 
     public:
         ClimateSensor(uint8_t pin);
-        virtual float getValue() const;
-        virtual void update() const;
+        virtual float getValue();
+        virtual void update();
 };
 
 #endif

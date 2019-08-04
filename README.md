@@ -1,6 +1,6 @@
 # Wagter ClimateController #
 
-A "climate controlling" libary for Arduino. Can be used to control the climate using sensors and relays.
+A "climate controlling" libary for Arduino. Can be used to control the climate using sensors and relays. I created this mainly for myself but also for anyone who would like to use, improve or extend this.
 
 ## ClimateSensor class ##
 

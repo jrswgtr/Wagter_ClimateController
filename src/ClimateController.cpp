@@ -3,7 +3,7 @@
 /**
  * public:
  */
-ClimateController::ClimateController(const ClimateSensor &_sensor, Relay *_relay, Range *_range, Lock *_lock)
+ClimateController::ClimateController(ClimateSensor *_sensor, Relay *_relay, Range *_range, Lock *_lock)
     : sensor(_sensor), relay(_relay), lock(_lock), range(_range)
     {
     relay->begin();
@@ -19,14 +19,31 @@ void ClimateController::poll()
     Serial.println(range->inRange(currentValue));
     setState(range->inRange(currentValue));
 }
+
+bool ClimateController::getRelayState()
+{
+    return relay->getState();
+}
+
+Range *ClimateController::getRange()
+{
+    return range;
+}
+
+float ClimateController::getCurrentValue()
+{
+    return currentValue;
+}
+
 /**
  * private:
  */
 void ClimateController::update()
 {
-    sensor.update();
-    currentValue = sensor.getValue();
+    sensor->update();
+    currentValue = sensor->getValue();
 }
+
 void ClimateController::setState( bool state )
 {
     if (relay->getState()) {
