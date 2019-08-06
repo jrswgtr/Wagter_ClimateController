@@ -3,6 +3,7 @@
 Relay::Relay(int _pin)
 {
 	pin = _pin;
+    state = false;
 }
 void Relay::begin()
 {
